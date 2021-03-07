@@ -3,7 +3,7 @@ package cl.pokedex.bns.repository;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import cl.pokedex.bns.domain.pokeapi.Pokemon;
+import cl.pokedex.bns.domain.pokeapi.MetaPokemon;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -19,8 +19,8 @@ public class PokedexRepository {
 		return this.restTemplate.getForObject(POKEAPI_POKEDEX_URL,Object.class);
 	}
 	
-	public Pokemon getPokemonInfo(Integer pokemonId) {
-		return this.restTemplate.getForObject(POKEAPI_POKEDEX_URL.concat(String.valueOf(pokemonId)),Pokemon.class);
+	public MetaPokemon getPokemonInfo(Integer pokemonId) {
+		return this.restTemplate.getForObject(POKEAPI_POKEDEX_URL.concat(String.valueOf(pokemonId)),MetaPokemon.class);
 	}
 	
 	public Object getEvolutionInfo(Integer pokemonId) {

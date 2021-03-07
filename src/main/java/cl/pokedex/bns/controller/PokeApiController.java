@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import cl.pokedex.bns.domain.Pokemon;
 import cl.pokedex.bns.service.PokedexService;
 import lombok.AllArgsConstructor;
 
@@ -19,7 +20,7 @@ public class PokeApiController {
 	}
 	
 	@GetMapping(path="/pokedex/{id}")
-	public Object getPokedex(@PathVariable("id") Integer pokemonId) {
+	public Pokemon getPokemon(@PathVariable("id") Integer pokemonId) {
 		return this.pokedexService.getPokemonInfo(pokemonId);
 	}
 	

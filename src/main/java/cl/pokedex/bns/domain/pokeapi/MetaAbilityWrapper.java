@@ -5,7 +5,6 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class Type {
-
-	private String name;
+public class MetaAbilityWrapper {
+	MetaAbility ability;
 }

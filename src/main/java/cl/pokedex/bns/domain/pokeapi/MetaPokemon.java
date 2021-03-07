@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class Pokemon {
+public class MetaPokemon {
 	private Integer weight;
-	private List<MetaType> types;
-	private List<MetaAbility> abilities;
+	private List<MetaTypeWrapper> types;
+	private List<MetaAbilityWrapper> abilities;
 }

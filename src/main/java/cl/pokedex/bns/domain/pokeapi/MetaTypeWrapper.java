@@ -5,7 +5,8 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class MetaType {
+public class MetaTypeWrapper {
+	
+	private MetaType type;
 
-	private String name;
 }
