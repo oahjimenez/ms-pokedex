@@ -5,7 +5,12 @@ import java.util.List;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
+/**
+* PokeApi raw pokemon pojo
+* 
+* @version 1.0.0
+* @author Oswaldo Jimenez
+*/
 @Data
 @NoArgsConstructor
 public class MetaPokemon {

@@ -9,6 +9,12 @@ import cl.pokedex.bns.domain.PokemonDetails;
 import cl.pokedex.bns.service.PokedexService;
 import lombok.AllArgsConstructor;
 
+/**
+* Pokedex Main entry point controller
+* 
+* @version 1.0.0
+* @author Oswaldo Jimenez
+*/
 @AllArgsConstructor
 @RestController
 public class PokeApiController {

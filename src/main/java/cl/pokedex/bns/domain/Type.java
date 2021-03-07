@@ -5,6 +5,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+* Defines a Pokemon type
+* 
+* @version 1.0.0
+* @author Oswaldo Jimenez
+*/
 @Data
 @Builder
 @NoArgsConstructor

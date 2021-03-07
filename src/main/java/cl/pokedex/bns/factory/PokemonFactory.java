@@ -21,6 +21,12 @@ import cl.pokedex.bns.domain.pokeapi.MetaTargetEvolution;
 import cl.pokedex.bns.domain.pokeapi.MetaTypeWrapper;
 import lombok.NoArgsConstructor;
 
+/**
+* Pokedex pojos generator
+* 
+* @version 1.0.0
+* @author Oswaldo Jimenez
+*/
 @Component
 @NoArgsConstructor
 public class PokemonFactory {

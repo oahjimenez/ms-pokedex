@@ -14,6 +14,12 @@ import cl.pokedex.bns.factory.PokemonFactory;
 import cl.pokedex.bns.repository.PokedexRepository;
 import lombok.AllArgsConstructor;
 
+/**
+* Pokedex business logic - Service Layer
+* 
+* @version 1.0.0
+* @author Oswaldo Jimenez
+*/
 @AllArgsConstructor
 @Service
 public class PokedexService {

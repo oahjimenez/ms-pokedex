@@ -5,6 +5,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+* Describes a Pokemon Ability
+* 
+* @version 1.0.0
+* @author Oswaldo Jimenez
+*/
 @Data
 @Builder
 @AllArgsConstructor

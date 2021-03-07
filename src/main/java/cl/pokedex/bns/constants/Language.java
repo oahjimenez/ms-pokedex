@@ -2,6 +2,12 @@ package cl.pokedex.bns.constants;
 
 import lombok.Getter;
 
+/**
+* Pokedex supported languages
+* 
+* @version 1.0.0
+* @author Oswaldo Jimenez
+*/
 @Getter
 public enum Language {
 	SPANISH("ES","Spanish language");

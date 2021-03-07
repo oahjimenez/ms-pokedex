@@ -11,6 +11,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+* Pokemon basic information
+* 
+* @version 1.0.0
+* @author Oswaldo Jimenez
+*/
 @Data
 @Builder
 @NoArgsConstructor
