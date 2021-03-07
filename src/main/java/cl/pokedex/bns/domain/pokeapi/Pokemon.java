@@ -1,12 +1,15 @@
 package cl.pokedex.bns.domain.pokeapi;
 
-import lombok.AllArgsConstructor;
+import java.util.List;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Data
+@NoArgsConstructor
 public class Pokemon {
 	private Integer weight;
+	private List<MetaType> types;
+	private List<MetaAbility> abilities;
 }
