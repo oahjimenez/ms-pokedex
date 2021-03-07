@@ -9,7 +9,7 @@ import cl.pokedex.bns.domain.pokeapi.MetaSpeciesDetail;
 import lombok.AllArgsConstructor;
 
 /**
-* Pokedex entry points integration with PokeApi
+* Pokedex entry points, integration with PokeApi
 * 
 * @version 1.0.0
 * @author Oswaldo Jimenez

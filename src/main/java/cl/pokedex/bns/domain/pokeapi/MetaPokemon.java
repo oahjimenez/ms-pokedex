@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
-* PokeApi raw pokemon pojo
+* PokeApi raw Pokemon pojo
 * 
 * @version 1.0.0
 * @author Oswaldo Jimenez
