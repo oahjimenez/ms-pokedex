@@ -18,6 +18,11 @@ public class PokeApiController {
 		return this.pokedexService.getPokedex();
 	}
 	
+	@GetMapping(path="/pokedex/{id}")
+	public Object getPokedex(@PathVariable("id") Integer pokemonId) {
+		return this.pokedexService.getPokemonInfo(pokemonId);
+	}
+	
 	@GetMapping(path="/evolution/{id}")
 	public Object getEvolution(@PathVariable("id") Integer pokemonId) {
 		return this.pokedexService.getEvolutionInfo(pokemonId);

@@ -15,6 +15,10 @@ public class PokedexService {
 		return pokedexRepository.getPokedex();
 	}
 	
+	public Object getPokemonInfo(Integer pokemonId) {
+		return pokedexRepository.getPokemonInfo(pokemonId);
+	}
+	
 	public Object getEvolutionInfo(Integer pokemonId) {
 		return pokedexRepository.getEvolutionInfo(pokemonId);
 	}
