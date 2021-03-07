@@ -1,5 +1,7 @@
 package cl.pokedex.bns.controller;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,14 +21,14 @@ public class PokeApiController {
 		return this.pokedexService.getPokedex();
 	}
 	
-	@GetMapping(path="/pokedex/{id}")
+	@GetMapping(path="/pokemon/{id}")
 	public Pokemon getPokemon(@PathVariable("id") Integer pokemonId) {
 		return this.pokedexService.getPokemonInfo(pokemonId);
 	}
 	
-	@GetMapping(path="/evolution/{id}")
-	public Object getEvolution(@PathVariable("id") Integer pokemonId) {
-		return this.pokedexService.getEvolutionInfo(pokemonId);
+	@GetMapping(path="/evolutions/{id}")
+	public List<Pokemon> getEvolution(@PathVariable("id") Integer pokemonId) {
+		return this.pokedexService.getEvolutions(pokemonId);
 	}
 
 }

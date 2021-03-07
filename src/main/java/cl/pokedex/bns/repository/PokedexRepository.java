@@ -3,7 +3,9 @@ package cl.pokedex.bns.repository;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import cl.pokedex.bns.domain.pokeapi.MetaEvolutionChain;
 import cl.pokedex.bns.domain.pokeapi.MetaPokemon;
+import cl.pokedex.bns.domain.pokeapi.MetaSpeciesDetail;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -11,7 +13,7 @@ import lombok.AllArgsConstructor;
 public class PokedexRepository {
 
 	public static final String POKEAPI_POKEDEX_URL = "https://pokeapi.co/api/v2/pokemon/";
-	public static final String POKEAPI_EVOLUTION_URL = "https://pokeapi.co/api/v2/evolution-chain/";
+	public static final String POKEAPI_EVOLUTION_CHAIN_URL = "https://pokeapi.co/api/v2/evolution-chain/";
 	
 	protected final RestTemplate restTemplate;
 	
@@ -23,7 +25,11 @@ public class PokedexRepository {
 		return this.restTemplate.getForObject(POKEAPI_POKEDEX_URL.concat(String.valueOf(pokemonId)),MetaPokemon.class);
 	}
 	
-	public Object getEvolutionInfo(Integer pokemonId) {
-		return this.restTemplate.getForObject(POKEAPI_EVOLUTION_URL.concat(String.valueOf(pokemonId)),String.class);
+	public MetaEvolutionChain getEvolutionChain(String evolutionChainUrl) {
+		return this.restTemplate.getForObject(evolutionChainUrl,MetaEvolutionChain.class);
+	}
+	
+	public MetaSpeciesDetail getSpeciesInfo(String speciesUrl) {
+		return this.restTemplate.getForObject(speciesUrl,MetaSpeciesDetail.class);
 	}
 }
