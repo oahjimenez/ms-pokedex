@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import cl.pokedex.bns.constants.Language;
 import cl.pokedex.bns.domain.Pokemon;
+import cl.pokedex.bns.domain.PokemonDetails;
 import cl.pokedex.bns.domain.pokeapi.MetaEvolutionChain;
 import cl.pokedex.bns.domain.pokeapi.MetaPokemon;
 import cl.pokedex.bns.domain.pokeapi.MetaSpeciesDetail;
@@ -27,13 +29,14 @@ public class PokedexService {
 		return factory.getPokemon(pokedexRepository.getPokemonInfo(pokemonId));
 	}
 	
-	public List<Pokemon> getEvolutions(Integer pokemonId) {
+	
+	public PokemonDetails getPokemonDetails(Integer pokemonId) {
 		MetaPokemon metaPokemon = pokedexRepository.getPokemonInfo(pokemonId);
 		MetaSpeciesDetail speciesInfo = pokedexRepository.getSpeciesInfo(metaPokemon.getSpecies().getUrl());
 		MetaEvolutionChain metaEvolutionChain = pokedexRepository.getEvolutionChain(speciesInfo.getEvolutionChain().getUrl());
 		List<Pokemon> evolutions = factory.getEvolutions(metaEvolutionChain);
 		removePokemon(evolutions,metaPokemon.getName());
-		return evolutions;
+		return factory.getPokemonDetails(factory.getPokemon(metaPokemon),speciesInfo,evolutions,Language.SPANISH);
 	}
 	
 	protected void removePokemon(List<Pokemon> pokemons, String pokemonName) {

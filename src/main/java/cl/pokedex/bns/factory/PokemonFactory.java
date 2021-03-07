@@ -7,12 +7,16 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
+import cl.pokedex.bns.constants.Language;
 import cl.pokedex.bns.domain.Ability;
 import cl.pokedex.bns.domain.Pokemon;
+import cl.pokedex.bns.domain.PokemonDetails;
 import cl.pokedex.bns.domain.Type;
 import cl.pokedex.bns.domain.pokeapi.MetaAbilityWrapper;
 import cl.pokedex.bns.domain.pokeapi.MetaEvolutionChain;
+import cl.pokedex.bns.domain.pokeapi.MetaFlavorTextEntry;
 import cl.pokedex.bns.domain.pokeapi.MetaPokemon;
+import cl.pokedex.bns.domain.pokeapi.MetaSpeciesDetail;
 import cl.pokedex.bns.domain.pokeapi.MetaTargetEvolution;
 import cl.pokedex.bns.domain.pokeapi.MetaTypeWrapper;
 import lombok.NoArgsConstructor;
@@ -59,5 +63,14 @@ public class PokemonFactory {
 			evolutions.add(pokemon);
 			appendEvolutions(evolutionTargets.get(i).getEvolvesTo(),evolutions);
 		}
+	}
+	public PokemonDetails getPokemonDetails(Pokemon pokemon,MetaSpeciesDetail speciesDetail, List<Pokemon> evolutions,Language language) {
+		MetaFlavorTextEntry metaFlavorTextEntry = speciesDetail.getFlavorTextEntries().stream().filter(ft -> ft.getLanguage().getName().equalsIgnoreCase(language.getKey())).findFirst().get();
+		return PokemonDetails.builder()
+				.pokemon(pokemon)
+				.description(metaFlavorTextEntry.getFlavorText())
+				.language(metaFlavorTextEntry.getLanguage().getName())
+				.evolutions(evolutions)
+				.build();
 	}
 }
