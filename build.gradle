@@ -2,7 +2,6 @@ plugins {
 	id 'org.springframework.boot' version '2.4.3'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
-    id 'war'
 }
 
 group = 'cl.pokedex'
@@ -13,6 +12,7 @@ configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
+	providedRuntime
 }
 
 repositories {
@@ -28,17 +28,21 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
+sourceSets.main.compileClasspath += configurations.providedRuntime
+sourceSets.test.compileClasspath += configurations.providedRuntime
+sourceSets.test.runtimeClasspath += configurations.providedRuntime
+javadoc.classpath=sourceSets.main.compileClasspath
+
+
 test {
 	useJUnitPlatform()
 }
 
 jar {
     manifest {
-        attributes "Main-Class": "cl.pokedex.bns.MsPokedexApplication"
+        attributes 'Main-Class': 'cl.pokedex.bns.MsPokedexApplication'
     }
-
     from {
-        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
-        with jar
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
