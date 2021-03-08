@@ -27,8 +27,8 @@ public class PokedexRepository {
 		return this.restTemplate.getForObject(POKEAPI_POKEDEX_URL,Object.class);
 	}
 	
-	public MetaPokemon getPokemonInfo(Integer pokemonId) {
-		return this.restTemplate.getForObject(POKEAPI_POKEDEX_URL.concat(String.valueOf(pokemonId)),MetaPokemon.class);
+	public MetaPokemon getPokemonInfo(String pokemonId) {
+		return this.restTemplate.getForObject(POKEAPI_POKEDEX_URL.concat(pokemonId),MetaPokemon.class);
 	}
 	
 	public MetaEvolutionChain getEvolutionChain(String evolutionChainUrl) {

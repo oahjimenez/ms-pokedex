@@ -38,7 +38,7 @@ public class PokeApiController {
 	 */
 	@CrossOrigin
 	@GetMapping(path="/pokemon/{id}")
-	public Pokemon getPokemon(@PathVariable("id") Integer pokemonId) {
+	public Pokemon getPokemon(@PathVariable("id") String pokemonId) {
 		return this.pokedexService.getPokemonInfo(pokemonId);
 	}
 
@@ -48,7 +48,7 @@ public class PokeApiController {
 	 */
 	@CrossOrigin
 	@GetMapping(path="/pokemon/{id}/details")
-	public PokemonDetails getPokemonDetails(@PathVariable("id") Integer pokemonId) {
+	public PokemonDetails getPokemonDetails(@PathVariable("id") String pokemonId) {
 		return this.pokedexService.getPokemonDetails(pokemonId);
 	}
 

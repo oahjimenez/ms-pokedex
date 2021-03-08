@@ -27,16 +27,31 @@ public class PokedexService {
 	protected final PokedexRepository pokedexRepository;
 	protected final PokemonFactory factory;
 	
+	/**
+	 * Get pokedex from given offset
+	 * @param pokemonId pokemon identifier, supports its id and name
+	 * @return Pokemon
+	 */
 	public Object getPokedex() {
 		return pokedexRepository.getPokedex();
 	}
 	
-	public Pokemon getPokemonInfo(Integer pokemonId) {
+	/**
+	 * Get pokemon basic info from pokemon id
+	 * @param pokemonId pokemon identifier, supports its id and name
+	 * @return Pokemon
+	 */
+	public Pokemon getPokemonInfo(String pokemonId) {
 		return factory.getPokemon(pokedexRepository.getPokemonInfo(pokemonId));
 	}
 	
-	
-	public PokemonDetails getPokemonDetails(Integer pokemonId) {
+
+	/**
+	 * Get pokemon evolutions and detailed information from the pokemon id
+	 * @param pokemonId identifier of the pokemon
+	 * @return PokemonDetails
+	 */
+	public PokemonDetails getPokemonDetails(String pokemonId) {
 		MetaPokemon metaPokemon = pokedexRepository.getPokemonInfo(pokemonId);
 		MetaSpeciesDetail speciesInfo = pokedexRepository.getSpeciesInfo(metaPokemon.getSpecies().getUrl());
 		MetaEvolutionChain metaEvolutionChain = pokedexRepository.getEvolutionChain(speciesInfo.getEvolutionChain().getUrl());
@@ -45,6 +60,10 @@ public class PokedexService {
 		return factory.getPokemonDetails(factory.getPokemon(metaPokemon),speciesInfo,evolutions,Language.SPANISH);
 	}
 	
+	/**
+	 * Removes given pokemon name from pokemon list
+	 * @param pokemons list of pokemon, pokemonName name to be removed
+	 */
 	protected void removePokemon(List<Pokemon> pokemons, String pokemonName) {
 		pokemons.removeIf(p -> p.getName().equalsIgnoreCase(pokemonName));
 	}
