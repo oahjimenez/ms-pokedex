@@ -31,6 +31,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PokemonFactory {
 
+	/**
+	 * Get business pokemon from pokeApi pokemon metadata
+	 * @param metaPokemon raw pokeApi data that describes a pokemon
+	 * @return business Pokemon
+	 */
 	public Pokemon getPokemon(MetaPokemon metaPokemon) {
 		return Pokemon.builder()
 				.id(metaPokemon.getId())
@@ -42,24 +47,45 @@ public class PokemonFactory {
 				.build();
 	}
 	
+	/**
+	 * Get ability details from pokeApi ability metadata
+	 * @param metaAbilityWrapper raw pokeApi data that describes an ability
+	 * @return business ability
+	 */
 	protected Ability getAbility(MetaAbilityWrapper metaAbilityWrapper) {
 		return Ability.builder()
 				.name(metaAbilityWrapper.getAbility().getName())
 				.build();
 	}
 	
+	/**
+	 * Get type details from pokeApi type metadata
+	 * @param metaTypeWrapper raw pokeApi data that describes a type
+	 * @return business type
+	 */
 	protected Type getType(MetaTypeWrapper metaTypeWrapper) {
 		return Type.builder()
 				.name(metaTypeWrapper.getType().getName())
 				.build();
 	}
 
+	/**
+	 * Get list of pokemon evolutions from pokeApi evolution chain
+	 * @param metaEvolutionChain raw pokeApi evolution medatata
+	 * @return list of pokemon evolutions
+	 */
 	public List<Pokemon> getEvolutions(MetaEvolutionChain metaEvolutionChain) {
 		List<Pokemon> evolutions = new ArrayList<>();
 		appendEvolutions(metaEvolutionChain.getChain().getEvolvesTo(),evolutions);
 		return evolutions;
 	}
-	
+
+	/**
+	 * Populates list by transversing pokeApi evolution chain
+	 * @param evolutionTargets pokeApi recursive evolution chain
+	 * @param evolution evolution list to populate
+	 * @return list of pokemon evolutions
+	 */
 	public void appendEvolutions(List<MetaTargetEvolution> evolutionTargets,List<Pokemon> evolutions) {
 		if (!Objects.nonNull(evolutionTargets) || evolutionTargets.isEmpty()) {
 			return;
@@ -70,6 +96,15 @@ public class PokemonFactory {
 			appendEvolutions(evolutionTargets.get(i).getEvolvesTo(),evolutions);
 		}
 	}
+	
+	/**
+	 * Groups pokemon details in business pojo
+	 * @param pokemon owning the details
+	 * @param speciesDetail pokeApi species details
+	 * @oaram evolutions pokemon evolution list
+	 * @param language to look up the details
+	 * @return pokemon details business pojo
+	 */
 	public PokemonDetails getPokemonDetails(Pokemon pokemon,MetaSpeciesDetail speciesDetail, List<Pokemon> evolutions,Language language) {
 		MetaFlavorTextEntry metaFlavorTextEntry = speciesDetail.getFlavorTextEntries().stream().filter(ft -> ft.getLanguage().getName().equalsIgnoreCase(language.getKey())).findFirst().get();
 		return PokemonDetails.builder()

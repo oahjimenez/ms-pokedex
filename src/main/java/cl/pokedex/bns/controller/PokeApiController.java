@@ -21,16 +21,28 @@ public class PokeApiController {
 	
 	protected final PokedexService pokedexService;
 	
+	/**
+	 * Pokemon list endpoint
+	 * @return pokeApi pokedex response
+	 */
 	@GetMapping("/pokedex")
 	public Object getPokedex() {
 		return this.pokedexService.getPokedex();
 	}
 	
+	/**
+	 * Gets pokemon basic information by pokemon id
+	 * @return pokemon object
+	 */
 	@GetMapping(path="/pokemon/{id}")
 	public Pokemon getPokemon(@PathVariable("id") Integer pokemonId) {
 		return this.pokedexService.getPokemonInfo(pokemonId);
 	}
-	
+
+	/**
+	 * Gets pokemon detailed information by pokemon id
+	 * @return pokemon details object
+	 */
 	@GetMapping(path="/pokemon/{id}/details")
 	public PokemonDetails getPokemonDetails(@PathVariable("id") Integer pokemonId) {
 		return this.pokedexService.getPokemonDetails(pokemonId);
