@@ -29,11 +29,13 @@ public class PokedexService {
 	
 	/**
 	 * Get pokedex from given offset
+	 * @param limit total items displayed
+	 * @param offset pokedex start offset
 	 * @param pokemonId pokemon identifier, supports its id and name
 	 * @return Pokemon
 	 */
-	public Object getPokedex() {
-		return pokedexRepository.getPokedex();
+	public Object getPokedex(String offset, String limit) {
+		return pokedexRepository.getPokedex(offset,limit);
 	}
 	
 	/**

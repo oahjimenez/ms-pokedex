@@ -3,6 +3,7 @@ package cl.pokedex.bns.controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import cl.pokedex.bns.domain.Pokemon;
@@ -28,8 +29,9 @@ public class PokeApiController {
 	 */
 	@CrossOrigin
 	@GetMapping("/pokedex")
-	public Object getPokedex() {
-		return this.pokedexService.getPokedex();
+	public Object getPokedex(@RequestParam(defaultValue = "0") String offset,
+			                 @RequestParam(defaultValue = "0") String limit) {
+		return this.pokedexService.getPokedex(offset,limit);
 	}
 	
 	/**
